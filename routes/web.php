@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DaftarBeasiswaController;
+use App\Http\Controllers\BeasiswaChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,7 @@ use App\Http\Controllers\DaftarBeasiswaController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-}); //route ke index.blade.php
+Route::get('/', [BeasiswaChartController::class, 'index']); //route ke index.blade.php
 Route::get('/beasiswa/index', [DaftarBeasiswaController::class, 'index'])->name('beasiswa.create'); //bakalan mengambil prosedur index di controller dan menampilkan beasiswa/create.blade.php
 Route::post('/beasiswa', [DaftarBeasiswaController::class, 'store'])->name('beasiswa.store'); //bakalan mengambil fungsi store di controller dan mengirimkan hasil dari beasiswa/create.blade.php
 Route::get('/beasiswa/result', [DaftarBeasiswaController::class, 'result'])->name('beasiswa.result'); //bakalan mengambil prosedur result di controller dan menampilkan beasiswa/result.blade.php
